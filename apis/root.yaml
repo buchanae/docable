@@ -1,0 +1,75 @@
+swagger: "2.0"
+
+info:
+  version: "x.y.z"
+  title: Comp Bio APIs
+  description: >
+    Foo
+
+tags:
+  - name: Tasks
+    description: Describe the Task API in detail here.
+  - name: Jobs
+    description: Jobs represent workflows submitted to run.
+  - name: Genome
+    description: Genomic features.
+
+schemes:
+- http
+- https
+
+consumes: [application/json]
+produces: [application/json]
+
+basePath: /v0
+
+paths:
+  /tasks:
+    post:
+      !!import/single tes/ops/CreateTask.yaml
+    get:
+      !!import/single tes/ops/ListTasks.yaml
+
+  /tasks/{id}:
+    get:
+      !!import/single tes/ops/GetTask.yaml
+
+  "/tasks/{id}:cancel":
+    post:
+      !!import/single tes/ops/CancelTask.yaml
+
+  /tasks/service-info:
+    get:
+      !!import/single tes/ops/GetServiceInfo.yaml
+
+#  /engine/jobs:
+#    post:
+#      !!import/single bunny/ops/CreateJob.yaml
+#          
+#  /engine/jobs/{id}:
+#    get:
+#      !!import/single bunny/ops/GetJob.yaml
+#    put:
+#      !!import/single bunny/ops/UpdateJob.yaml
+#
+#  /engine/jobs/{id}/{status}:
+#    put:
+#      !!import/single bunny/ops/UpdateJobStatus.yaml
+#
+#  /genome/position:
+#    get:
+#      !!import/single genome/ops/ListPositions.yaml
+#
+#  /genome/gene:
+#    get:
+#      !!import/single genome/ops/ListGenes.yaml
+#
+#  /genome/transcript:
+#    get:
+#      !!import/single genome/ops/ListTranscripts.yaml
+
+
+definitions:
+  tes: !!import/dirMap tes/defs
+#  bunny: !!import/dirMap bunny/defs
+#  genome: !!import/dirMap genome/defs

@@ -1,0 +1,48 @@
+{
+  "name": "docable",
+  "version": "0.1.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alex Buchanan",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babelify": "^8.0.0",
+    "browserify": "^16.1.1",
+    "browserify-incremental": "^3.1.1",
+    "nodemon": "^1.17.3",
+    "serve": "^6.5.3",
+    "watchify": "^3.10.0",
+    "yaml-import": "^0.2.3"
+  },
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "comments": false
+        }
+      ]
+    ]
+  },
+  "babel": {
+    "presets": [
+      "react",
+      "env"
+    ]
+  },
+  "dependencies": {
+    "react": "^16.3.1",
+    "react-dom": "^16.2.0",
+    "react-marked": "^0.3.1",
+    "react-marked-markdown": "^1.4.6",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "react-router-hash-link": "^1.2.0"
+  }
+}

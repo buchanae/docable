@@ -1,0 +1,20 @@
+
+summary: Get a job.
+operationId: GetJob
+tags: [Jobs]
+
+parameters:
+- name: id
+  description: Job ID.
+  in: path
+  required: true
+  schema:
+    type: string
+
+responses:
+  200:
+    description: OK
+    content:
+      application/json:
+        schema:
+          $ref: ../defs/Job.yaml

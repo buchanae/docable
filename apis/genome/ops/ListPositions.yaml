@@ -1,0 +1,15 @@
+
+summary: List positions
+operationId: ListPositions
+tags: [Genome]
+
+responses:
+  200:
+    schema:
+      type: object
+      properties:
+        positions:
+          type: array
+          description: List of Positions.
+          items:
+            $ref: ../defs/Position.yaml

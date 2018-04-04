@@ -1,0 +1,22 @@
+summary: Update a job's status.
+operationId: UpdateJobStatus
+tags: [Jobs]
+
+parameters:
+- name: id
+  description: Job ID.
+  in: path
+  required: true
+  schema:
+    type: string
+
+- name: status
+  description: Job status.
+  in: path
+  required: true
+  schema:
+    $ref: ../defs/JobStatus.yaml
+
+responses:
+  200:
+    description: OK

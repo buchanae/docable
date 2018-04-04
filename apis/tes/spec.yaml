@@ -1,0 +1,42 @@
+swagger: "2.0"
+
+info:
+  version: "0.3.0"
+  title: Task API
+  description: >
+    Foo
+
+tags:
+  - name: Tasks
+    description: Describe the Task API in detail here.
+
+schemes:
+- http
+- https
+
+consumes: [application/json]
+produces: [application/json]
+
+basePath: /v0
+
+paths:
+  /tasks:
+    post:
+      !!import/single ops/CreateTask.yaml
+    get:
+      !!import/single ops/ListTasks.yaml
+
+  /tasks/{id}:
+    get:
+      !!import/single ops/GetTask.yaml
+
+  "/tasks/{id}:cancel":
+    post:
+      !!import/single ops/CancelTask.yaml
+
+  /tasks/service-info:
+    get:
+      !!import/single ops/GetServiceInfo.yaml
+
+definitions:
+  !!import/dirMap defs

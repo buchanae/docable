@@ -1,0 +1,17 @@
+summary: Cancel a task
+description: Cancel a task.
+operationId: CancelTask
+tags: [Tasks]
+
+parameters:
+- name: id
+  description: ID of the task to cancel.
+  in: path
+  required: true
+  type: string
+
+responses:
+  200:
+    description: OK
+  404:
+    description: Task not found.

@@ -1,0 +1,23 @@
+title: Transcript
+
+type: object
+properties:
+  id:
+    description: |-
+      Ensembl ID
+    type: string
+
+  start:
+    description: |-
+      Start position.
+    type: integer
+    format: int64
+
+  end:
+    description: |-
+      End position.
+    type: integer
+    format: int64
+
+  geneID:
+    type: string

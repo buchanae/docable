@@ -1,0 +1,56 @@
+title: TaskLog
+description: |-
+  Describes logging information related to a Task.
+
+type: object
+properties:
+
+  logs:
+    description: |-
+      Logs for each executor
+    type: array
+    items:
+      $ref: '#/definitions/ExecutorLog'
+
+  metadata:
+    description: |-
+      Arbitrary logging metadata included by the implementation.
+    type: object
+    additionalProperties:
+      type: string
+
+  startTime:
+    description: |-
+      Date + time when the task started.
+    type: dateTime
+
+  endTime:
+    description: |-
+      Date + time when the task ended.
+    type: dateTime
+
+  outputs:
+    description: |-
+      Information about all output files. Directory outputs are
+      flattened into separate items.
+    type: array
+    items:
+      $ref: '#/definitions/OutputFileLog'
+
+  systemLogs:
+    description: |-
+      System logs are any logs the system decides are relevant,
+      which are not tied directly to an Executor process.
+      Content is implementation specific: format, size, etc.
+
+      System logs may be collected here to provide convenient access.
+
+      For example, the system may include the name of the host
+      where the task is executing, an error message that caused
+      a SYSTEM_ERROR state (e.g. disk is full), etc.
+
+      System logs are only included in the FULL task view.
+
+    type: array
+    items:
+      type: string

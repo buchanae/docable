@@ -1,0 +1,4 @@
+node_modules
+generated
+browserify-cache.json
+build.js.tmp*

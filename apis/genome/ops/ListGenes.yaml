@@ -1,0 +1,15 @@
+
+summary: List Genes
+operationId: ListGenes
+tags: [Genome]
+
+responses:
+  200:
+    schema:
+      type: object
+      properties:
+        genes:
+          type: array
+          description: List of Genes.
+          items:
+            $ref: ../defs/Gene.yaml

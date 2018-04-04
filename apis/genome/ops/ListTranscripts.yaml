@@ -1,0 +1,15 @@
+
+summary: List Transcripts
+operationId: ListTranscripts
+tags: [Genome]
+
+responses:
+  200:
+    schema:
+      type: object
+      properties:
+        transcripts:
+          type: array
+          description: List of Transcripts.
+          items:
+            $ref: ../defs/Transcript.yaml

@@ -1,0 +1,33 @@
+title: Job
+type: object
+properties:
+  app:
+    type: string
+    description: URL of the CWL application (tool or workflow) document.
+  id:
+    type: string
+    description: Job ID.
+  parentId:
+    type: string
+  rootId:
+    type: string
+  name:
+    type: string
+  status:
+    $ref: JobStatus.yaml
+  message:
+    type: string
+  config:
+    type: object
+    additionalProperties:
+      type: object
+  inputs:
+    type: object
+    additionalProperties:
+      type: object
+  outputs:
+    type: object
+    additionalProperties:
+      type: object
+  resources:
+    $ref: Resources.yaml

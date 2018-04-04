@@ -1,0 +1,119 @@
+title: Task
+description: |-
+  A Task is a unit of work, including input files
+  to be downloaded, a sequence of containers and commands to run,
+  and output files to be uploaded to storage.
+
+  Task also includes state (queued, running, complete, etc),
+  and logs (stdout, stderr, start/end time, etc).
+
+
+example:
+  id: "batvkihkq10g008vc8u0"
+  name: Example task
+  state: QUEUED
+  inputs:
+  - url: s3://my-bucket/examples/my-example.txt
+    path: /inputs/input.txt
+
+  outputs:
+  - url: s3://my-bucket/examples/output/stdout.txt
+    path: /outputs/stdout.txt
+  - url: s3://my-bucket/examples/output/stderr.txt
+    path: /outputs/stderr.txt
+
+  volumes:
+  - /tmp
+
+
+type: object
+properties:
+
+  id:
+    description: |-
+      Task ID, assigned by the server.
+    type: string
+
+  name:
+    description: |-
+      Short, human-readable name.
+    type: string
+
+  description:
+    description: |-
+      Longer, human-readable description.
+    type: string
+
+  state:
+    description: |-
+      Task state.
+    $ref: '#/definitions/State'
+
+  inputs:
+    description: |-
+      Input files to be downloaded before execution.
+    type: array
+    items:
+      $ref: '#/definitions/Input'
+
+  outputs:
+    description: |-
+      Output files to be uploaded after execution.
+    type: array
+    items:
+      $ref: '#/definitions/Output'
+
+  resources:
+    description: |-
+      Request that the task be run with these resources.
+    $ref: '#/definitions/Resources'
+
+  executors:
+    description: |-
+      A sequence of commands to run and the environment
+      to run them in (container image, environment variables, 
+      stdout, stderr, etc).
+
+      Execution stops on the first error.
+    type: array
+    items:
+      $ref: '#/definitions/Executor'
+
+  volumes:
+    description: |-
+      Volumes are directories which may be used to share data between
+      Executors. Volumes are initialized as empty directories by the
+      system when the task starts and are mounted at the same path
+      in each Executor.
+
+      For example, given a volume defined at "/vol/A",
+      executor 1 may write a file to "/vol/A/exec1.out.txt", then
+      executor 2 may read from that file.
+
+      (Essentially, this translates to a `docker run -v` flag where
+      the container path is the same for each executor).
+    type: array
+    items:
+      type: string
+
+  tags:
+    description: |-
+      A key-value map of arbitrary tags.
+    type: object
+    additionalProperties:
+      type: string
+
+  logs:
+    description: |-
+      Task logging information.
+      Normally, this will contain only one entry,
+      but in the case where a task fails and is retried,
+      an entry will be appended to this list.
+    type: array
+    items:
+      $ref: '#/definitions/TaskLog'
+
+  creationTime:
+    type: dateTime
+    description: |-
+      Date/time the task was created.

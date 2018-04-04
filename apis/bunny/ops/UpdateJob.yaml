@@ -1,0 +1,16 @@
+
+summary: Update a job.
+operationId: UpdateJob
+tags: [Jobs]
+
+parameters:
+- name: id
+  description: Job ID.
+  in: path
+  required: true
+  schema:
+    type: string
+
+responses:
+  200:
+    description: OK

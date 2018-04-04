@@ -1,0 +1,69 @@
+title: Gene
+description: |-
+  Annotation of a contiguous region of a sequence.
+  An example might be a gene or a protein.
+  For example, a position X might corresponds to gene/Feature TP53.
+
+type: object
+properties:
+  id:
+    description: |-
+      Ensembl ID
+    type: string
+
+  symbol:
+    description: unknown
+    type: string
+
+  description:
+    description: |-
+      Human-readable description of the gene.
+      TODO function?
+    type: string
+
+  seqId:
+    description: |-
+      TODO should be reference ID?
+    type: string
+
+  start:
+    description: |-
+      Start position.
+    type: integer
+    format: int64
+
+  end:
+    description: |-
+      End position.
+    type: integer
+    format: int64
+
+  strand:
+    description: |-
+      Strand.
+    $ref: Strand.yaml
+
+  accession:
+    description: |-
+      Unknown.
+    type: string
+
+  refseq:
+    description: |-
+      Unknown
+    type: string
+
+  info:
+    description: |- 
+      Name/value attributes of the annotation.
+      Attribute names follow the GFF3 naming convention
+      of reserved names starting with an upper cases
+      character, and user-define names start with lower-case.
+      
+      Most GFF3 pre-defined attributes apply,
+      the exceptions are ID and Parent, which are
+      defined as fields. Additional, the following attributes
+      are added:
+      - Score - the GFF3 score column
+      - Phase - the GFF3 phase column for CDS features.
+    type: object

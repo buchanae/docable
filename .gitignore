@@ -1,0 +1,3 @@
+static/build.js.tmp
+node_modules
+browserify-cache.json

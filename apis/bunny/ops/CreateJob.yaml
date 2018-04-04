@@ -1,0 +1,17 @@
+summary: Create a job.
+operationId: CreateJob
+tags: [Jobs]
+
+parameters:
+- name: body
+  summary: Job object.
+  required: true
+  in: body
+  schema:
+    $ref: ../defs/Job.yaml
+
+responses:
+  200:
+    description: OK
+    schema:
+      $ref: ../defs/Job.yaml

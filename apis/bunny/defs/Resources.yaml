@@ -1,0 +1,26 @@
+title: Resources
+type: object
+properties:
+  cpu:
+    description: Number of CPUs requested.
+    type: integer
+    format: int64
+  memMB:
+    type: integer
+    format: int64
+  diskSpaceMB:
+    type: integer
+    format: int64
+  networkAccess:
+    type: boolean
+  workingDir:
+    type: string
+  tmpDir:
+    type: string
+  outDirSize:
+    type: integer
+    format: int64
+  tmpDirSize:
+    type: integer
+    format: int64
+  

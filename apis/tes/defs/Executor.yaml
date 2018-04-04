@@ -1,0 +1,62 @@
+title: Executor
+description: |-
+  Executor describes a command to be executed, and its environment.
+
+type: object
+example:
+  image: ubuntu
+  command: [md5sum, input.txt]
+  workdir: /inputs
+  stdout: /outputs/stdout.txt
+  stderr: /outputs/stderr.txt
+  env:
+    FOO: bar
+
+properties:
+
+  image:
+    type: string
+    required: true
+    description: |-
+      Name of the container image.
+
+  command:
+    type: array
+    required: true
+    items:
+      type: string
+    description: |-
+      A sequence of program arguments to execute,
+      where the first argument is the program to execute
+      (i.e. argv).
+
+  workdir:
+    type: string
+    description: |-
+      The working directory that the command will be executed in.
+      Defaults to the directory set by the container image.
+
+  stdin:
+    type: string
+    description: |-
+      Path inside the container to a file which will be piped
+      to the executor's stdin. Must be an absolute path.
+
+  stdout:
+    type: string
+    description: |-
+      Path inside the container to a file where the executor's
+      stdout will be written to. Must be an absolute path.
+
+  stderr:
+    type: string
+    description: |-
+      Path inside the container to a file where the executor's
+      stderr will be written to. Must be an absolute path.
+
+  env:
+    description: |-
+      Enviromental variables to set within the container.
+    type: object
+    additionalProperties:
+      type: string

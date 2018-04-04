@@ -1,0 +1,52 @@
+
+summary: List tasks
+description: |-
+  Returns a list of tasks, sorted by creation date/time, with the most recent
+  tasks appearing first.
+operationId: ListTasks
+tags: [Tasks]
+
+parameters:
+- in: query
+  name: pageSize
+  description: The number of Tasks to return in one page.
+  type: integer
+  format: int64
+  default: 256
+  minimum: 1
+  maximum: 2048
+
+- in: query
+  name: pageToken
+  description: Opaque page token defining the beginning of the Task list page.
+  type: string
+
+- in: query
+  name: view
+  description: |
+    Affects the fields included in the returned Tasks.
+    - MINIMAL: only id and state. 
+    - BASIC: all fields except stdout, stderr, and input content.
+    - FULL: all fields
+  type: string
+  default: MINIMAL
+  enum:
+  - MINIMAL
+  - BASIC
+  - FULL
+
+responses:
+  200:
+    description: OK
+    schema:
+      type: object
+      title: ListTasksResponse
+      properties:
+        tasks:
+          type: array
+          description: List of tasks.
+          items:
+            $ref: '#/definitions/Task'
+        nextPageToken:
+          type: string
+          description: Token used to request the next page of results.

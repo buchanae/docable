@@ -1,0 +1,46 @@
+title: Input
+description: Task input file.
+
+type: object
+
+example:
+  url: s3://my-bucket/examples/input-file.txt
+  path: /inputs/example.txt
+
+properties:
+  name:
+    description: |-
+      Short, human-readable name.
+    type: string
+
+  description:
+    description: |-
+      Longer, human-readable description.
+    type: string
+
+  url:
+    description: |
+      URL to input file. Required, unless "content" is set.
+    type: string
+
+  path:
+    description: |-
+      Path of the file inside the container.
+      Must be an absolute path.
+    type: string
+    required: true
+
+  type:
+    $ref: '#/definitions/FileType'
+    description: Type of the file, FILE or DIRECTORY
+
+  content:
+    description: |
+      File content literal.
+      
+      Implementations should support a minimum size of 128 KiB
+      in this field and may define their own maximum.
+      UTF-8 encoded.
+
+      If content is not empty, "url" must be ignored.
+    type: string

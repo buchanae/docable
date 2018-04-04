@@ -1,0 +1,10 @@
+title: JobStatus
+type: string
+enum:
+  - PENDING
+  - READY
+  - STARTED
+  - ABORTED
+  - FAILED
+  - COMPLETED
+  - RUNNING
